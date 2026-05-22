@@ -1,8 +1,9 @@
 import Navbar from "@/components/shared/Navbar";
+import { poppins } from "../layout";
 
 const AuthLayout = ({ children }) => {
   return (
-    <div>
+    <div className={`${poppins.className}`}>
       <Navbar />
       {children}
     </div>
