@@ -49,7 +49,7 @@ const BreakingNews = () => {
   ];
 
   return (
-    <section className={`relative overflow-hidden border-y border-white/10 bg-[#020617] w-11/12 mx-auto`}>
+    <section className={`relative overflow-hidden border-y border-white/10 bg-[#020617] `}>
       {/* PREMIUM BACKGROUND */}
 
       {/* <div className="absolute inset-0"> */}
@@ -75,8 +75,8 @@ const BreakingNews = () => {
           <div className="absolute inset-0 -translate-x-full animate-[shine_3s_linear_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
           {/* LIVE DOT */}
-{/* 
-          <div className="relative mr-4 flex items-center justify-center">
+
+          {/* <div className="relative mr-4 flex items-center justify-center">
             <span className="absolute h-4 w-4 animate-ping rounded-full bg-white" />
 
             <span className="relative h-4 w-4 rounded-full bg-white" />
