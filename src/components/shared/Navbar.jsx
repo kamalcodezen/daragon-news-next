@@ -24,7 +24,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <nav className="w-11/12 mx-auto flex justify-between items-center py-4 ">
+    <nav className="w-11/12 mx-auto flex justify-between items-center py-5 ">
       <div>
         <Image height={40} width={40} src={userAvatar} alt="User Avatar" />
       </div>
