@@ -1,4 +1,5 @@
 import { FaNewspaper, FaGlobeAsia } from "react-icons/fa";
+import BackButton from "./BackButton";
 
 const NewsNotFound = () => {
   return (
@@ -38,13 +39,13 @@ const NewsNotFound = () => {
 
           {/* Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5">
-            <button className="px-8 py-4 rounded-2xl bg-black text-white font-bold text-lg hover:bg-blue-600 transition-all duration-300 shadow-lg hover:scale-105">
+            {/* <button className="px-8 py-4 rounded-2xl bg-black text-white font-bold text-lg hover:bg-blue-600 transition-all duration-300 shadow-lg hover:scale-105">
               Back To Home
-            </button>
-
-            <button className="px-8 py-4 rounded-2xl border-2 border-gray-300 text-gray-700 font-bold text-lg hover:border-blue-500 hover:text-blue-600 transition-all duration-300">
+            </button> */}
+            <BackButton />
+            {/* <button className="px-8 py-4 rounded-2xl border-2 border-gray-300 text-gray-700 font-bold text-lg hover:border-blue-500 hover:text-blue-600 transition-all duration-300">
               Refresh News
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

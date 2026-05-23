@@ -4,6 +4,7 @@ import RightSideBar from "@/components/homePage/news/RightSideBar";
 import NewsNotFound from "@/components/shared/NewsNotFound";
 import { getCategory, getCategoryNews } from "@/lib/data";
 
+
 const CategoryNewsPage = async ({ params }) => {
   const { categoryId } = await params;
   //   console.log(categoryId);

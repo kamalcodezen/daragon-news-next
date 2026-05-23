@@ -10,7 +10,7 @@ export async function getCategory() {
 export const getCategoryNews = async (category_id) => {
     // Fake delay for loading effect
     await new Promise((resolve) =>
-        setTimeout(resolve, 3000)
+        setTimeout(resolve, 1000)
     );
     const res = await fetch(
         `https://openapi.programming-hero.com/api/news/category/${category_id}`
