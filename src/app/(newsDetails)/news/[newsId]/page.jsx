@@ -43,6 +43,7 @@ const NewsDetails = async ({ params }) => {
         <BackButton />
       </div>
       <div className="max-w-4xl mx-auto mt-20">
+        
         <div className=" group relative overflow-hidden rounded-[15px] bg-white border border-gray-200 shadow-xl hover:shadow-xl transition-all duration-500 mb-5">
           {/* LIVE Badge */}
           <div className="absolute top-5 left-5 z-20 flex items-center gap-2 bg-red-600 text-white px-4 py-1 rounded-full shadow-lg animate-pulse">
