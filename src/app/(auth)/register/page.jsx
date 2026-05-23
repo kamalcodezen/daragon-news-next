@@ -24,13 +24,13 @@ const RegisterPage = () => {
       <div className="min-h-[80vh] flex flex-col items-center justify-center">
         <form
           onSubmit={handleSubmit(handleLogin)}
-          className="px-8 py-8.5 border border-transparent bg-gradient-to-r from-gray-200 via-gray-300 to-gray-100 rounded-xl"
+          className="px-8 py-8 border border-transparent bg-gradient-to-r from-gray-200 via-gray-300 to-gray-100 rounded-xl"
         >
           <p className="font-semibold text-orange-600  mb-7">
             Login to Dashboard
           </p>
 
-          <div className="mb-4">
+          <div className="mb-5">
             <div className="input-group ">
               <input
                 type="text"
@@ -47,7 +47,7 @@ const RegisterPage = () => {
             )}
           </div>
 
-          <div className="mb-4">
+          <div className="mb-5">
             <div className="input-group ">
               <input
                 type="text"
@@ -64,7 +64,7 @@ const RegisterPage = () => {
             )}
           </div>
 
-          <div className="mb-4">
+          <div className="mb-5">
             <div className="input-group ">
               <input
                 type="email"
@@ -81,7 +81,7 @@ const RegisterPage = () => {
             )}
           </div>
 
-          <div className="mb-4">
+          <div className="mb-5">
             <div className="input-group ">
               <input
                 type="password"

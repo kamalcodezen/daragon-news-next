@@ -35,7 +35,7 @@ const LoginPage = () => {
             <div className="input-group ">
               <input
                 type="email"
-                {...register("email", { required: "kamal@exmaple.com" })}
+                {...register("email", { required: "kamal@exmaple.com*" })}
                 placeholder=" "
               />
               <label>Email Address</label>
@@ -55,7 +55,7 @@ const LoginPage = () => {
                 placeholder=" "
                 {...register("password", {
                   required:
-                    "Must be at least 8 characters with 1 uppercase and 1 number",
+                    "Must be at least 8 characters with 1 uppercase and 1 number*",
                 })}
               />
               <label>Password</label>
