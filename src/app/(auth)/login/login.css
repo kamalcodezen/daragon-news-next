@@ -19,11 +19,11 @@
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
-    color: #777;
+    color: #777777;
     font-size: 13px;
     pointer-events: none;
     transition: 0.3s ease;
-    background-color: white;
+    background-color: #dde0e5;
     padding: 0 5px;
 }
 
@@ -40,7 +40,7 @@ input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
 
-    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px #dde0e5 inset !important;
 
     -webkit-text-fill-color: black !important;
 
