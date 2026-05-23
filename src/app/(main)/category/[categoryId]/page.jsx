@@ -20,9 +20,9 @@ const CategoryNewsPage = async ({ params }) => {
         <LeftSideBar category={category} activeCategory={categoryId} />
 
         {/* NEWS */}
-        <div className="col-span-6  bg-gray-100">
+        <div className="col-span-6  ">
           <h2 className="text-lg font-bold">Category News</h2>
-          <div className="p-4 font-medium">
+          <div className="p-3 font-medium">
             {news.length > 0 ? (
               news.map((n) => <NewsCard key={n._id} n={n}></NewsCard>)
             ) : (

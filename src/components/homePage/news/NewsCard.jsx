@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   FaEye,
   FaStar,
@@ -11,8 +12,16 @@ const NewsCard = ({ n }) => {
   // Prevent crash if data missing
   if (!n) return null;
 
-  const { title, image_url, details, total_view, rating, author, others_info } =
-    n;
+  const {
+    _id,
+    title,
+    image_url,
+    details,
+    total_view,
+    rating,
+    author,
+    others_info,
+  } = n;
 
   return (
     <div className="group relative overflow-hidden rounded-[15px] bg-white border border-gray-200 shadow-xl hover:shadow-xl transition-all duration-500 mb-5">
@@ -118,9 +127,12 @@ const NewsCard = ({ n }) => {
         </div>
 
         {/* Button */}
-        <button className="mt-7 w-full py-4 rounded-2xl bg-black text-white font-bold text-lg hover:bg-gradient-to-r from-red-600 via-red-500 to-orange-500 transition-all duration-300 tracking-wide hover:scale-[1.02]">
-          Read Breaking News →
-        </button>
+
+        <Link href={`/news/${_id}`}>
+          <button className="mt-7 w-full py-4 rounded-2xl bg-black text-white font-bold text-lg hover:bg-gradient-to-r from-red-600 via-red-500 to-orange-500 transition-all duration-300 tracking-wide hover:scale-[1.02]">
+            Read Breaking News →
+          </button>
+        </Link>
       </div>
 
       {/* Animated Border */}

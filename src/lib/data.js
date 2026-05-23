@@ -18,3 +18,15 @@ export const getCategoryNews = async (category_id) => {
     const data = await res.json();
     return data.data;
 };
+
+export const getNewsDetailsById = async (details_id) => {
+    // Fake delay for loading effect
+    // await new Promise((resolve) =>
+    //     setTimeout(resolve, 3000)
+    // );
+    const res = await fetch(
+        `https://openapi.programming-hero.com/api/news/${details_id}`
+    );
+    const data = await res.json();
+    return data.data[0];
+};
