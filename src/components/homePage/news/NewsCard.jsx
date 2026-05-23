@@ -15,7 +15,7 @@ const NewsCard = ({ n }) => {
     n;
 
   return (
-    <div className="group relative overflow-hidden rounded-[30px] bg-white border border-gray-200 shadow-xl hover:shadow-xl transition-all duration-500">
+    <div className="group relative overflow-hidden rounded-[15px] bg-white border border-gray-200 shadow-xl hover:shadow-xl transition-all duration-500 mb-5">
       {/* LIVE Badge */}
       <div className="absolute top-5 left-5 z-20 flex items-center gap-2 bg-red-600 text-white px-4 py-1 rounded-full shadow-lg animate-pulse">
         <span className="w-2 h-2 bg-white rounded-full"></span>
@@ -62,7 +62,7 @@ const NewsCard = ({ n }) => {
       {/* Content */}
       <div className="p-7">
         {/* Author */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-4">
             <img
               src={author?.img}
@@ -99,7 +99,7 @@ const NewsCard = ({ n }) => {
         </p>
 
         {/* Bottom */}
-        <div className="mt-7 pt-5 border-t flex items-center justify-between">
+        <div className="mt-1 pt-2 border-t flex items-center justify-between">
           {/* Rating */}
           <div className="flex items-center gap-2">
             <FaStar className="text-yellow-400 text-xl" />
