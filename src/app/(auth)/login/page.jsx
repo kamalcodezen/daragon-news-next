@@ -25,10 +25,10 @@ const LoginPage = () => {
       <div className="min-h-[80vh] flex flex-col items-center justify-center">
         <form
           onSubmit={handleSubmit(handleLogin)}
-          className="  px-8 p-18 border border-transparent bg-gradient-to-r from-gray-200 via-gray-300 to-gray-100 rounded-2xl"
+          className="  px-8 p-20 border border-transparent bg-gradient-to-r from-gray-200 via-gray-300 to-gray-100 rounded-xl"
         >
           <p className="font-semibold text-orange-600  mb-7">
-            Login to Dashboard
+            Login your account
           </p>
 
           <div className="mb-6">
@@ -80,9 +80,9 @@ const LoginPage = () => {
           </button>
 
           <p className="text-sm text-center text-gray-700 ">
-            Don't have an account{" "}
+            Don’t Have An Account ? 
             <span className="text-orange-600">
-              <Link href={"/register"}>Sign up</Link>
+              <Link href={"/register"}> Register</Link>
             </span>
           </p>
         </form>
