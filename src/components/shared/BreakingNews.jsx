@@ -84,7 +84,7 @@ const BreakingNews = () => {
 
           {/* ICON */}
 
-          <div className="mr-3 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-xl animate-pulse">
+          <div className="mr-3 flex h-11 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-xl animate-pulse">
             <Flame className="size-5 text-white " />
           </div>
 

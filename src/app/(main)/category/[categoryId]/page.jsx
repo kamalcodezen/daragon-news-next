@@ -4,28 +4,28 @@ import RightSideBar from "@/components/homePage/news/RightSideBar";
 import NewsNotFound from "@/components/shared/NewsNotFound";
 import { getCategory, getCategoryNews } from "@/lib/data";
 
-
 const CategoryNewsPage = async ({ params }) => {
   const { categoryId } = await params;
-  //   console.log(categoryId);
 
   const category = await getCategory();
 
   const news = await getCategoryNews(categoryId);
-  //   console.log(news);
 
   return (
     <>
-      <div className="mx-auto my-[30px] grid w-11/12 grid-cols-12 gap-5">
+      <div className="mx-auto my-[30px] grid w-11/12 grid-cols-1 gap-5 lg:grid-cols-12">
         {/* CATEGORY */}
-        <LeftSideBar category={category} activeCategory={categoryId} />
+        <div className="lg:col-span-3">
+          <LeftSideBar category={category} activeCategory={categoryId} />
+        </div>
 
         {/* NEWS */}
-        <div className="col-span-6  ">
+        <div className="lg:col-span-6">
           <h2 className="text-lg font-bold">Category News</h2>
+
           <div className="p-3 font-medium">
             {news.length > 0 ? (
-              news.map((n) => <NewsCard key={n._id} n={n}></NewsCard>)
+              news.map((n) => <NewsCard key={n._id} n={n} />)
             ) : (
               <NewsNotFound />
             )}
@@ -33,8 +33,7 @@ const CategoryNewsPage = async ({ params }) => {
         </div>
 
         {/* SOCIAL */}
-
-        <div className="col-span-3 ">
+        <div className="lg:col-span-3">
           <RightSideBar />
         </div>
       </div>
