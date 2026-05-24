@@ -30,6 +30,7 @@ const RegisterPage = () => {
             Login to Dashboard
           </p>
 
+
           <div className="mb-5">
             <div className="input-group ">
               <input
