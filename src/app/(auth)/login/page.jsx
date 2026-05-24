@@ -29,18 +29,18 @@ const LoginPage = () => {
         rememberMe: true,
         callbackURL: "/",
       },
-      {
-        onSuccess: (res) => {
-          //redirect to the dashboard or sign in page
-          redirect("/");
-          alert("Login success");
-        },
-        onError: (ctx) => {
-          // display the error message
-          // alert(ctx.error.message);
-          alert("Login failed");
-        },
-      },
+      // {
+      //   onSuccess: (res) => {
+      //     //redirect to the dashboard or sign in page
+      //     redirect("/");
+      //     alert("Login success");
+      //   },
+      //   onError: (ctx) => {
+      //     // display the error message
+      //     // alert(ctx.error.message);
+      //     alert("Login failed");
+      //   },
+      // },
     );
     // console.log(res, error);
   };
