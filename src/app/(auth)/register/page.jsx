@@ -1,10 +1,16 @@
 "use client";
 
 import "@/app/(auth)/login/login.css";
+import { authClient } from "@/lib/auth-client";
+import { EyeClosed, EyeIcon } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const RegisterPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -12,9 +18,31 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm();
 
-  const handleLogin = (data) => {
-    console.log(data, "login");
-    // console.log(errors, "errors");
+  const handleRegister = async (data) => {
+    // console.log(data, "login");
+
+    const { data: res, error } = await authClient.signUp.email(
+      {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        image: data.photo,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: (ctx) => {
+          //redirect to the dashboard or sign in page
+          redirect("/");
+          alert("register success");
+        },
+        onError: (ctx) => {
+          // display the error message
+          // alert(ctx.error.message);
+          alert("register failed");
+        },
+      },
+    );
+    // console.log(res, error);
   };
 
   // console.log(errors, "errors");
@@ -23,19 +51,18 @@ const RegisterPage = () => {
     <div className="w-11/12 mx-auto">
       <div className="min-h-[80vh] flex flex-col items-center justify-center">
         <form
-          onSubmit={handleSubmit(handleLogin)}
+          onSubmit={handleSubmit(handleRegister)}
           className="px-8 py-8 border border-transparent bg-gradient-to-r from-gray-200 via-gray-300 to-gray-100 rounded-xl"
         >
           <p className="font-semibold text-orange-600  mb-7">
-            Login to Dashboard
+            Sign up for News Page
           </p>
-
 
           <div className="mb-5">
             <div className="input-group ">
               <input
                 type="text"
-                {...register("text", { required: "kamal Uddin" })}
+                {...register("name", { required: "kamal Uddin" })}
                 placeholder=" "
               />
               <label>Enter your name</label>
@@ -85,7 +112,7 @@ const RegisterPage = () => {
           <div className="mb-5">
             <div className="input-group ">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder=" "
                 {...register("password", {
                   required:
@@ -93,6 +120,12 @@ const RegisterPage = () => {
                 })}
               />
               <label>Password</label>
+              <span
+                className="absolute right-2 top-2 text-gray-600"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeIcon /> : <EyeClosed />}
+              </span>
             </div>
 
             {errors.password && (
@@ -101,7 +134,7 @@ const RegisterPage = () => {
               </p>
             )}
           </div>
-{/* 
+          {/* 
           <p className="text-[12px]  text-gray-600 underline hover:text-orange-600 mb-3">
             <Link href="">Forgot password</Link>
           </p> */}
@@ -110,7 +143,7 @@ const RegisterPage = () => {
             type="submit"
             className="btn w-full bg-linear-to-t bg-gradient-to-r from-red-600 via-red-500 to-orange-500 text-white mb-3"
           >
-           Create an Account
+            Create an Account
           </button>
 
           <p className="text-sm text-center text-gray-700 ">

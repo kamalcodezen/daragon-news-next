@@ -1,11 +1,18 @@
 "use client";
 
 import "@/app/(auth)/login/login.css";
+import { authClient } from "@/lib/auth-client";
 import { p } from "framer-motion/client";
+import { EyeClosed, EyeIcon } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { RxEyeOpen } from "react-icons/rx";
 
 const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -13,9 +20,29 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
 
-  const handleLogin = (data) => {
+  const handleLogin = async (data) => {
     // console.log(data, "login");
-    // console.log(errors, "errors");
+    const { data: res, error } = await authClient.signIn.email(
+      {
+        email: data.email, // required
+        password: data.password, // required
+        rememberMe: true,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: (res) => {
+          //redirect to the dashboard or sign in page
+          redirect("/");
+          alert("Login success");
+        },
+        onError: (ctx) => {
+          // display the error message
+          // alert(ctx.error.message);
+          alert("Login failed");
+        },
+      },
+    );
+    // console.log(res, error);
   };
 
   // console.log(errors, "errors");
@@ -51,7 +78,7 @@ const LoginPage = () => {
           <div className="mb-2">
             <div className="input-group ">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder=" "
                 {...register("password", {
                   required:
@@ -59,6 +86,12 @@ const LoginPage = () => {
                 })}
               />
               <label>Password</label>
+              <span
+                className="absolute right-2 top-2 text-gray-600"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeIcon /> : <EyeClosed />}
+              </span>
             </div>
 
             {errors.password && (
@@ -80,7 +113,7 @@ const LoginPage = () => {
           </button>
 
           <p className="text-sm text-center text-gray-700 ">
-            Don’t Have An Account ? 
+            Don’t Have An Account ?
             <span className="text-orange-600">
               <Link href={"/register"}> Register</Link>
             </span>
