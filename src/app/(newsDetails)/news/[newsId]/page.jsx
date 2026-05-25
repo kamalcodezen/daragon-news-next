@@ -39,6 +39,7 @@ const NewsDetails = async ({ params }) => {
 
   return (
     <div className="w-10/12 mx-auto mb-20 relative">
+      
       <div className="absolute top-[-60] ">
         <BackButton />
       </div>
