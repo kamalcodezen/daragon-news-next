@@ -38,9 +38,12 @@ const RegisterPage = () => {
         },
         // SUCCESS
         onSuccess: (ctx) => {
-          //redirect to the dashboard or sign in page
-          toast.success(`Hello, Welcome ${data.name}`);
-          redirect("/");
+          toast.success(`Hello, Welcome ${data.name} Signed in successfully`);
+
+          // SMALL UX DELAY
+          setTimeout(() => {
+            redirect("/");
+          }, 1200);
         },
         // ERROR
         onError: (ctx) => {

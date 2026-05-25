@@ -6,16 +6,27 @@ import { authClient } from "@/lib/auth-client";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const LoginPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const message = searchParams.get("message");
   const redirect = searchParams.get("redirect") || "/";
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+
+
+  const hasShown = useRef(false);
+  useEffect(() => {
+    if (message && !hasShown.current) {
+      toast.error(message);
+      hasShown.current = true;
+    }
+  }, [message]);
 
   const {
     register,

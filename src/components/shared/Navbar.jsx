@@ -33,44 +33,143 @@ const Navbar = () => {
   // console.log(user);
 
   return (
-    <nav className="w-11/12 mx-auto flex justify-between items-center py-5 ">
-      <div>
-         <Image height={40} width={40} src={userAvatar} alt="User Avatar" /> 
+    <nav className="w-11/12 mx-auto   py-5 grid grid-cols-12 md:gap-7 ">
+      <div className="lg:col-span-3">
+        {/* <Image height={40} width={40} src={userAvatar} alt="User Avatar" />  */}
       </div>
-      <div className="bg-gray-100 py-1.5 px-2 rounded-full flex gap-2 items-center">
+      <div className="bg-gray-100 py-1.5 px-2 rounded-full flex justify-center gap-2 items-center sm:col-span-6 col-span-8">
         {navLinks.map((link) => (
           <NavLink key={link.id} path={link.path} name={link.name}></NavLink>
         ))}
       </div>
-       <div className="">
+
+      <div className="sm:col-span-3 col-span-2 flex justify-end">
         {isPending ? (
-          <span className="loading loading-spinner loading-lg"></span>
+          <span className="loading loading-spinner loading-lg text-orange-500 "></span>
         ) : user ? (
-          <div className="flex items-center gap-3">
-            <p>{user.name}</p>
-            <Image
-              height={30}
-              width={30}
-              src={user.image || userAvatar}
-              alt={user.name}
-            />
-            <button
-              onClick={() =>signOut()}
-              className="btn px-7 text-gray-200 bg-gradient-to-r from-red-600 via-red-500 to-orange-500"
+          <div className="dropdown dropdown-end">
+            {/* AVATAR */}
+            <div
+              tabIndex={0}
+              role="button"
+              className="flex cursor-pointer items-center gap-3 rounded-full border  bg-white md:px-3   md:py-0.5   shadow-sm transition "
             >
-              LogOut
-            </button>
+              <Image
+                height={30}
+                width={30}
+                src={user.image || userAvatar}
+                alt={user.name}
+                className=" h-10 w-10 rounded-full object-cover"
+              />
+              <div className="hidden md:block">
+                <h2 className=" text-sm font-bold text-gray-800">
+                  {user.name}
+                </h2>
+
+                <p className="text-xs text-gray-500">My Account</p>
+              </div>
+            </div>
+
+            {/* DROPDOWN */}
+            <ul
+              tabIndex={0}
+              className=" dropdown-content z-[100] mt-4 w-64 rounded-2xl border border-gray-100 bg-white p-3 shadow-2xl"
+            >
+              {/* USER INFO */}
+              <div className=" mb-3 border-b pb-3 ">
+                <h2 className=" text-base font-bold text-gray-800 ">
+                  {user.name}
+                </h2>
+
+                <p className="text-sm text-gray-500 ">{user.email}</p>
+              </div>
+
+              {/* MENU */}
+              <li>
+                <Link
+                  href="/career"
+                  className="rounded-xl px-4   py-3 text-sm
+                font-medium transition hover:bg-gray-100"
+                >
+                  My Profile
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/about"
+                  className="
+                rounded-xl
+                px-4
+                py-3
+
+                text-sm
+                font-medium
+
+                transition
+
+                hover:bg-gray-100
+              "
+                >
+                  Dashboard
+                </Link>
+              </li>
+
+              {/* LOGOUT */}
+              <li className="mt-2">
+                <button
+                  onClick={() => signOut()}
+                  className="
+                w-full
+
+                rounded-xl
+
+                bg-gradient-to-r
+                from-red-600
+                via-red-500
+                to-orange-500
+
+                px-4
+                py-3
+
+                text-sm
+                font-bold
+                text-white
+
+                transition-all
+                duration-300
+
+                hover:scale-[1.02]
+              "
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
           </div>
         ) : (
-          <>
-            <Link href={"/login"}>
-              <button className="btn px-7 text-gray-200 bg-gradient-to-r from-red-600 via-red-500 to-orange-500">
-                Login
-              </button>
-            </Link>
-          </>
+          <Link href="/login">
+            <button
+              className="
+            btn
+
+            border-0
+
+            px-7
+
+            text-gray-100
+
+            bg-gradient-to-r
+            from-red-600
+            via-red-500
+            to-orange-500
+          "
+            >
+              Login
+            </button>
+          </Link>
         )}
-      </div> 
+      </div>
     </nav>
   );
 };
