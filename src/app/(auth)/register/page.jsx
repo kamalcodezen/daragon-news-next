@@ -2,14 +2,16 @@
 
 import "@/app/(auth)/login/login.css";
 import { authClient } from "@/lib/auth-client";
-import { EyeClosed, EyeIcon } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -30,15 +32,24 @@ const RegisterPage = () => {
         callbackURL: "/",
       },
       {
+        // REQUEST START
+        onRequest: () => {
+          setLoading(true);
+        },
+        // SUCCESS
         onSuccess: (ctx) => {
           //redirect to the dashboard or sign in page
+          toast.success(`Hello, Welcome ${data.name}`);
           redirect("/");
-          alert("register success");
         },
+        // ERROR
         onError: (ctx) => {
           // display the error message
-          // alert(ctx.error.message);
-          alert("register failed");
+          toast.error(ctx.error.message);
+        },
+        // FINALLY
+        onResponse: () => {
+          setLoading(false);
         },
       },
     );
@@ -124,7 +135,7 @@ const RegisterPage = () => {
                 className="absolute right-2 top-2 text-gray-600"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <EyeIcon /> : <EyeClosed />}
+                {showPassword ? <Eye /> : <EyeOff />}
               </span>
             </div>
 
@@ -141,9 +152,17 @@ const RegisterPage = () => {
 
           <button
             type="submit"
-            className="btn w-full bg-linear-to-t bg-gradient-to-r from-red-600 via-red-500 to-orange-500 text-white mb-3"
+            className="btn w-full bg-linear-to-t bg-gradient-to-r from-red-600 via-red-500 to-orange-500 text-white mb-3   disabled:cursor-not-allowed
+              disabled:opacity-70"
           >
-            Create an Account
+            {loading ? (
+              <>
+                Signing In...
+                <span className="loading loading-spinner loading-sm"></span>
+              </>
+            ) : (
+              "Create an Account"
+            )}
           </button>
 
           <p className="text-sm text-center text-gray-700 ">
