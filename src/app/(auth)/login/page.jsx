@@ -2,13 +2,12 @@
 
 import "@/app/(auth)/login/login.css";
 import { authClient } from "@/lib/auth-client";
-import { p } from "framer-motion/client";
+
 import { EyeClosed, EyeIcon } from "lucide-react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { RxEyeOpen } from "react-icons/rx";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,27 +21,13 @@ const LoginPage = () => {
 
   const handleLogin = async (data) => {
     // console.log(data, "login");
-    const { data: res, error } = await authClient.signIn.email(
-      {
-        email: data.email, // required
-        password: data.password, // required
-        rememberMe: true,
-        callbackURL: "/",
-      },
-      // {
-      //   onSuccess: (res) => {
-      //     //redirect to the dashboard or sign in page
-      //     redirect("/");
-      //     alert("Login success");
-      //   },
-      //   onError: (ctx) => {
-      //     // display the error message
-      //     // alert(ctx.error.message);
-      //     alert("Login failed");
-      //   },
-      // },
-    );
-    // console.log(res, error);
+    const { data: res, error } = await authClient.signIn.email({
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      image: data.photo,
+      callbackURL: "/",
+    });
   };
 
   // console.log(errors, "errors");
