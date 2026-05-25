@@ -33,12 +33,12 @@ const Navbar = () => {
   // console.log(user);
 
   return (
-    <nav className="w-11/12 mx-auto   py-5 grid grid-cols-12 md:gap-7 ">
+    <nav className="w-11/12 mx-auto bg-gray-100 rounded-full  py-1.5 px-2 grid grid-cols-12 md:gap-7 my-6 ">
       <div className="lg:col-span-3">
         {/* <Image height={40} width={40} src={userAvatar} alt="User Avatar" />  */}
       </div>
-      <div className="bg-gray-100 py-1.5 px-2 rounded-full flex justify-center gap-2 items-center sm:col-span-6 col-span-8">
-        {navLinks.map((link) => (
+      <div className="  flex justify-center gap-2 items-center sm:col-span-6 col-span-8">
+        {navLinks.slice(0, user ? navLinks.length : 2).map((link) => (
           <NavLink key={link.id} path={link.path} name={link.name}></NavLink>
         ))}
       </div>
@@ -91,7 +91,7 @@ const Navbar = () => {
                   className="rounded-xl px-4   py-3 text-sm
                 font-medium transition hover:bg-gray-100"
                 >
-                  My Profile
+                  About
                 </Link>
               </li>
 
@@ -111,7 +111,7 @@ const Navbar = () => {
                 hover:bg-gray-100
               "
                 >
-                  Dashboard
+                  Career
                 </Link>
               </li>
 
@@ -151,8 +151,7 @@ const Navbar = () => {
           <Link href="/login">
             <button
               className="
-            btn
-
+            btn rounded-full flex justify-end
             border-0
 
             px-7

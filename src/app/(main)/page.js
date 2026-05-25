@@ -4,6 +4,7 @@ const category_id = "01"
 
 const Home = async () => {
   redirect(`/category/${category_id}`)
+  // redirect("/")
 };
 
 export default Home;
